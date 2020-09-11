@@ -31,9 +31,18 @@ An example command would be:
 ```bash
 python -um scripts.train_classifier -d cuda -c configs/4layer-cnn-mnist.json --log_dir logs/mnist
 ```
+UPDATE: (device is now CPU instead of CUDA; and `data_dir` added, instead of the environment variable)
+```bash
+python -um scripts.train_classifier --device cpu --config configs/4layer-cnn-mnist.json --log_dir logs/mnist --data_dir data/
+```
+
 To monitor the training we run Tensorboard:
 ```bash
 tensorboard --logdir=/path/to/the/log/directory
+```
+UPDATE:
+```bash
+tensorboard --logdir=logs
 ```
 
 ### Structure of the repository
