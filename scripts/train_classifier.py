@@ -31,7 +31,7 @@ def main():
                                  'cifar10', 'uniform-noise-cifar10', 'pair-noise-cifar10',
                                  'cifar100', 'uniform-noise-cifar100',
                                  'clothing1m', 'imagenet'])
-    parser.add_argument('--data_dir', type=str, default=None)
+    parser.add_argument('--data_dir', type=str, default='data')
     parser.add_argument('--data_augmentation', '-A', action='store_true', dest='data_augmentation')
     parser.set_defaults(data_augmentation=False)
     parser.add_argument('--num_train_examples', type=int, default=None)
