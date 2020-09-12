@@ -122,8 +122,13 @@ def main():
 
     # stopper = callbacks.EarlyStoppingWithMetric(metric=metrics_list[0], stopping_param=args.stopping_param,
     #                                             partition='val', direction='max')
-    stopper = callbacks.EarlyStoppingWithMetric(metric=metrics_list[0], stopping_param=args.stopping_param,
-                                                partition='train', direction='max')
+    # stopper = callbacks.EarlyStoppingWithMetric(metric=metrics_list[0], stopping_param=args.stopping_param,
+    #                                             partition='train', direction='max')
+    stopper = callbacks.StoppingWithMetricEquals(
+        metric=metrics_list[0],
+        metric_target_value_for_stopping=1,
+        partition='train'
+    )
 
     training.train(model=model,
                    train_loader=train_loader,
@@ -141,7 +146,7 @@ def main():
 
     # if training finishes successfully, compute the test score
     print("Testing the best validation model...")
-    model = utils.load(os.path.join(args.log_dir, 'checkpoints', 'best_val.mdl'),
+    model = utils.load(os.path.join(args.log_dir, 'checkpoints', 'best_val_accuracy.mdl'),
                        methods=methods, device=args.device)
     pred = utils.apply_on_dataset(model, test_loader.dataset, batch_size=args.batch_size,
                                   output_keys_regexp='pred', description='Testing')['pred']

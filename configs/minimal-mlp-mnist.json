@@ -1,8 +1,8 @@
 {
   "classifier": [
     {"type": "flatten"},
-    {"type": "fc", "dim": 492, "activation": "relu", "batch_norm": true},
-    {"type": "fc", "dim": 492, "activation": "relu", "batch_norm": true},
+    {"type": "fc", "dim": 440, "activation": "relu", "batch_norm": true},
+    {"type": "fc", "dim": 440, "activation": "relu", "batch_norm": true},
     {"type": "fc", "dim": 40, "activation": "relu", "batch_norm": true},
     {"type": "fc", "dim": 10}
   ],
