@@ -1,10 +1,9 @@
 {
   "classifier": [
     {"type": "flatten"},
-    {"type": "fc", "dim": 512, "activation": "relu", "batch_norm": true},
-    {"type": "fc", "dim": 512, "activation": "relu", "batch_norm": true},
-    {"type": "fc", "dim": 512, "activation": "relu", "batch_norm": true},
-    {"type": "fc", "dim": 512, "activation": "relu", "batch_norm": true},
+    {"type": "fc", "dim": 492, "activation": "relu", "batch_norm": true},
+    {"type": "fc", "dim": 492, "activation": "relu", "batch_norm": true},
+    {"type": "fc", "dim": 40, "activation": "relu", "batch_norm": true},
     {"type": "fc", "dim": 10}
   ],
   "q-network": [
