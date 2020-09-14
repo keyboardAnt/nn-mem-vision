@@ -8,6 +8,7 @@ import torch
 from nnlib.nnlib import utils, training, metrics, callbacks
 from nnlib.nnlib.data_utils.base import load_data_from_arguments
 import methods
+import operator
 
 
 def main():
@@ -124,9 +125,9 @@ def main():
     #                                             partition='val', direction='max')
     # stopper = callbacks.EarlyStoppingWithMetric(metric=metrics_list[0], stopping_param=args.stopping_param,
     #                                             partition='train', direction='max')
-    stopper = callbacks.StoppingWithMetricEquals(
+    stopper = callbacks.StoppingWithOperatorApplyingOnMetric(
         metric=metrics_list[0],
-        metric_target_value_for_stopping=1,
+        metric_target_value=1,
         partition='train'
     )
 
