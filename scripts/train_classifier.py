@@ -115,7 +115,10 @@ def main():
                         detach=args.detach,
                         warm_up=args.warm_up)
 
-    metrics_list = [metrics.Accuracy(output_key='pred')]
+    metrics_list = [
+        metrics.SumOfWrongPredictions(output_key='pred'),
+        metrics.Accuracy(output_key='pred')
+    ]
     if args.dataset == 'imagenet':
         metrics_list.append(metrics.TopKAccuracy(k=5, output_key='pred'))
 
@@ -128,7 +131,7 @@ def main():
     #                                             partition='train', direction='max')
     stopper = callbacks.StoppingWithOperatorApplyingOnMetric(
         metric=metrics_list[0],
-        metric_target_value=1,
+        metric_target_value=0,
         partition='train'
     )
 
