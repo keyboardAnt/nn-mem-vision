@@ -32,7 +32,7 @@ def main():
                                  'cifar10', 'uniform-noise-cifar10', 'pair-noise-cifar10',
                                  'cifar100', 'uniform-noise-cifar100',
                                  'clothing1m', 'imagenet'])
-    # parser.add_argument('--data-normalizing', dest='data-normalizing', action='store_true')
+    # parser.add_argument('--data_normalizing', dest='data_normalizing', action='store_true')
     parser.add_argument('--one_hot', dest='is_one_hot', action='store_true')
     parser.set_defaults(is_one_hot=False)
     parser.add_argument('--data_dir', type=str, default='data')
@@ -75,13 +75,13 @@ def main():
     train_loader, val_loader, test_loader, _ = load_data_from_arguments(args)
 
     # Options
-    # optimization_args = {
-    #     'optimizer': {
-    #         'name': 'adam',
-    #         'lr': args.lr,
-    #         'weight_decay': args.weight_decay
-    #     }
-    # }
+    optimization_args = {
+        'optimizer': {
+            'name': 'adam',
+            'lr': args.lr,
+            'weight_decay': args.weight_decay
+        }
+    }
 
     # optimization_args = {
     #     'optimizer': {
@@ -94,15 +94,15 @@ def main():
     #     }
     # }
 
-    optimization_args = {
-        'optimizer': {
-            'name': 'adam',
-            'lr': 0.001,
-        },
-        'scheduler': {
-            'name': 'dont_use',
-        }
-    }
+    # optimization_args = {
+    #     'optimizer': {
+    #         'name': 'adam',
+    #         'lr': 0.001,
+    #     },
+    #     'scheduler': {
+    #         'name': 'dont_use',
+    #     }
+    # }
 
 
     with open(args.config, 'r') as f:
