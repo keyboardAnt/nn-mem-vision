@@ -33,7 +33,7 @@ python -um scripts.train_classifier -d cuda -c configs/4layer-cnn-mnist.json --l
 ```
 UPDATE: (device is now CPU instead of CUDA; and `data_dir` added, instead of the environment variable)
 ```bash
-python -um scripts.train_classifier --device=cpu --config=configs/minimal-mlp-mnist.json --dataset=mnist --one_hot --loss_function=mse --log_dir=logs/mnist --data_dir=data
+python -um scripts.train_classifier --device=cpu --config=configs/minimal-mlp-mnist.json --dataset=mnist --loss_function=ce --log_dir=logs/mnist --data_dir=data
 ```
 
 To monitor the training we run Tensorboard:

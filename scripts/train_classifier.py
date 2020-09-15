@@ -126,7 +126,7 @@ def main():
                         warm_up=args.warm_up)
 
     metrics_list = [
-        metrics.SumOfWrongPredictions(output_key='pred'),
+        # metrics.SumOfWrongPredictions(output_key='pred'),
         metrics.Accuracy(output_key='pred')
     ]
     if args.dataset == 'imagenet':
@@ -141,7 +141,7 @@ def main():
     #                                             partition='train', direction='max')
     stopper = callbacks.StoppingWithOperatorApplyingOnMetric(
         metric=metrics_list[0],
-        metric_target_value=0,
+        metric_target_value=1,
         partition='train'
     )
 
