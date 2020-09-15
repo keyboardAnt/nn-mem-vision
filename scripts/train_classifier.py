@@ -165,7 +165,7 @@ def main():
         os.path.join(
             args.log_dir,
             'checkpoints',
-            f'best_{stopper.partition}_{stopper.metric}.mdl'),
+            f'best_{stopper.partition}_{stopper.metric.name}.mdl'),
                        methods=methods, device=args.device)
     pred = utils.apply_on_dataset(model, test_loader.dataset, batch_size=args.batch_size,
                                   output_keys_regexp='pred', description='Testing')['pred']

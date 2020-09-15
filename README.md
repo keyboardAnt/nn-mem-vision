@@ -31,19 +31,28 @@ An example command would be:
 ```bash
 python -um scripts.train_classifier -d cuda -c configs/4layer-cnn-mnist.json --log_dir logs/mnist
 ```
-UPDATE: (device is now CPU instead of CUDA; and `data_dir` added, instead of the environment variable)
-```bash
-python -um scripts.train_classifier --device=cpu --config=configs/minimal-mlp-mnist.json --dataset=mnist --loss_function=ce --log_dir=logs/mnist --data_dir=data
-```
+
+> ### UPDATE 
+> 
+> for a plain run:
+> ```bash
+> python -um scripts.train_classifier --device=cpu --config=configs/minimal-mlp-mnist.json --dataset=mnist --loss_function=ce --log_dir=logs/mnist --data_dir=data
+> ```
+> for random labels on training, but plain validation labels:
+> ```bash
+> python -um scripts.python -um scripts.train_classifier --device=cpu --config=configs/minimal-mlp-mnist.json --loss_function=ce --log_dir=logs/mnist --data_dir=data --dataset=uniform-noise-mnist --error_prob=.9 --clean_validation --epochs=50000
+> ``` 
 
 To monitor the training we run Tensorboard:
 ```bash
 tensorboard --logdir=/path/to/the/log/directory
 ```
-UPDATE:
-```bash
-tensorboard --logdir=logs
-```
+
+> ### UPDATE
+> 
+> ```bash
+> tensorboard --logdir=logs
+> ```
 
 ### Structure of the repository
 | Directory | Purpose |
