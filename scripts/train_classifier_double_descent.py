@@ -93,7 +93,7 @@ def main():
     if args.dataset == 'imagenet':
         metrics_list.append(metrics.TopKAccuracy(k=5, output_key='pred'))
 
-    callbacks_list = [callbacks.SaveBestWithMetric(metric=metrics_list[0], partition='val', direction='max')]
+    callbacks_list = [callbacks.SaveBestWithMetric(metric=metrics_list[0], partition='val', direction='min')]
 
     stopper = callbacks.EarlyStoppingWithMetric(metric=metrics_list[0], stopping_param=args.stopping_param,
                                                 partition='val', direction='max')

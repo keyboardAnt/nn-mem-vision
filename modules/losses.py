@@ -43,6 +43,7 @@ def get_classification_loss(target, pred, loss_function='ce', loss_function_para
         return F.cross_entropy(input=pred, target=target.argmax(dim=1))
     if loss_function == 'mse':
         return mse(target, torch.softmax(pred, dim=1))
+        # return mse(target, torch.argmax(pred, dim=1))
     if loss_function == 'mae':
         return mae(target, torch.softmax(pred, dim=1))
     if loss_function == 'gce':

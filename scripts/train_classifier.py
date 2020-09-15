@@ -34,6 +34,7 @@ def main():
                                  'clothing1m', 'imagenet'])
     # parser.add_argument('--data-normalizing', dest='data-normalizing', action='store_true')
     parser.add_argument('--one_hot', dest='is_one_hot', action='store_true')
+    parser.set_defaults(is_one_hot=False)
     parser.add_argument('--data_dir', type=str, default='data')
     parser.add_argument('--data_augmentation', '-A', action='store_true', dest='data_augmentation')
     parser.set_defaults(data_augmentation=False)
@@ -95,9 +96,8 @@ def main():
 
     optimization_args = {
         'optimizer': {
-            'name': 'sgd',
-            'lr': 0.01,
-            'momentum': 0.9
+            'name': 'adam',
+            'lr': 0.001,
         },
         'scheduler': {
             'name': 'dont_use',
@@ -164,7 +164,11 @@ def main():
 
     # if training finishes successfully, compute the test score
     print("Testing the best validation model...")
-    model = utils.load(os.path.join(args.log_dir, 'checkpoints', 'best_val_accuracy.mdl'),
+    model = utils.load(
+        os.path.join(
+            args.log_dir,
+            'checkpoints',
+            f'best_{stopper.partition}_{stopper.metric}.mdl'),
                        methods=methods, device=args.device)
     pred = utils.apply_on_dataset(model, test_loader.dataset, batch_size=args.batch_size,
                                   output_keys_regexp='pred', description='Testing')['pred']
