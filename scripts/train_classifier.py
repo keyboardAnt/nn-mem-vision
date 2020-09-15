@@ -32,9 +32,6 @@ def main():
                                  'cifar10', 'uniform-noise-cifar10', 'pair-noise-cifar10',
                                  'cifar100', 'uniform-noise-cifar100',
                                  'clothing1m', 'imagenet'])
-    # parser.add_argument('--data_normalizing', dest='data_normalizing', action='store_true')
-    parser.add_argument('--one_hot', dest='is_one_hot', action='store_true')
-    parser.set_defaults(is_one_hot=False)
     parser.add_argument('--data_dir', type=str, default='data')
     parser.add_argument('--data_augmentation', '-A', action='store_true', dest='data_augmentation')
     parser.set_defaults(data_augmentation=False)
